@@ -47,7 +47,8 @@ Calculating The Most Popular Stations and Trip...
 
 The most Popular Start Station is:Columbus Circle / Union Station, with a count of 5656
 The most Popular End Station is:Columbus Circle / Union Station, with a count of 6048
-The most Popular combination of Start and End station trip is:Jefferson Dr & 14th St SW to Jefferson Dr & 14th St SW, with a count of 673
+The most Popular combination of Start and End station trip is:
+Jefferson Dr & 14th St SW to Jefferson Dr & 14th St SW, with a count of 673
 
 This took 0.7213177680969238 seconds.
 ----------------------------------------
@@ -75,4 +76,13 @@ This took 0.03942728042602539 seconds.
 ----------------------------------------
 
 ```
+### Known Bugs
 
+I have used the `.lower()` function to make the **input handling robust**.
+Yet, there can be _some cases_ where there is an error like `KeyBoard Interrupt`.
+
+So please avoid the usage of:
+* Ctrl C + Ctrl V 
+* Ctrl X + Ctrl V
+
+If you want to copy and paste then please use the ***right click button on mouse or trackpad***.
