@@ -8,6 +8,11 @@ import time
 import pandas as pd
 import numpy as np
 
+"""
+CITY_DATA is a dictionary which stores the name of the cities as keys and the path to the .csv files of these cities as keys
+
+"""
+
 CITY_DATA = { 'chicago': 'C:/Users/SATYESH/Downloads/All_Project_files/chicago.csv',
               'new york city': 'C:/Users/SATYESH/Downloads/All_Project_files/new_york_city.csv',
               'washington': 'C:/Users/SATYESH/Downloads/All_Project_files/washington.csv' }
@@ -75,11 +80,17 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
+    #TO DO: Read the .csv file of the city given as input and store it in a variable 'df'
     df=pd.read_csv(CITY_DATA[city])
+    #TO DO: To convert the 'Start Time' Column into appropriate format by using to_datetime
     df['Start Time']=pd.to_datetime(df['Start Time'])
+    #TO DO: To convert the 'End Time' Column into appropriate format by using to_datetime
     df['End Time']=pd.to_datetime(df['End Time'])
+    #TO DO:To create a new column 'month' by extracting the month number from 'Start Time' column 
     df['month']=df['Start Time'].dt.month
+    #TO DO:To create a new column 'day_of_week' by extracting the day name from 'Start Time' column 
     df['day_of_week']=df['Start Time'].dt.day_name()
+    #TO DO:To create a new column 'hour' by extracting the hour from 'Start Time' column 
     df['hour']=df['Start Time'].dt.hour
     
     if month!='all':
@@ -220,13 +231,19 @@ def raw_data(df):
 
 def main():
     while True:
+        #Calling the get_filters() function and storing the returned values in city,month,day variables
         city, month, day = get_filters()
+        #Calling the load_data function and storing the returned dataframe in 'df'
         df = load_data(city, month, day)
-
+        #Calling the time_stats function and display the time statistics
         time_stats(df)
+        #Calling the station_stats function and display the station statistics
         station_stats(df)
+        #Calling the trip_duration_stats function and display the trip_duration statistics
         trip_duration_stats(df)
+        #Calling the user_stats function and display user data
         user_stats(df,city)
+        #Calling the raw_data function to ask the user if they want to see the raw data
         raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
