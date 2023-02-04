@@ -4,9 +4,9 @@
 # In[2]:
 
 
-import time
-import pandas as pd
-import numpy as np
+import time #import the time library to calculate the time taken for executing the functions
+import pandas as pd # import the pandas library as pd
+import numpy as np #import the numpy library as np
 
 CITY_DATA = { 'chicago': 'C:/Users/SATYESH/Downloads/All_Project_files/chicago.csv',
               'new york city': 'C:/Users/SATYESH/Downloads/All_Project_files/new_york_city.csv',
