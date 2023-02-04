@@ -4,9 +4,9 @@
 # In[2]:
 
 
-import time
-import pandas as pd
-import numpy as np
+import time #import the time library to calculate the time taken for executing the functions
+import pandas as pd # import the pandas library as pd
+import numpy as np #import the numpy library as np
 
 """
 CITY_DATA is a dictionary which stores the name of the cities as keys and the path to the .csv files of these cities as keys
@@ -30,8 +30,8 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
-            city=input("Enter the Name of the City you want the data for-Chicago or New York City or Washington:")
-            if city.lower()=='chicago' or city.lower()=='new york city' or city.lower()=='washington':
+            city=input("Enter the Name of the City you want the data for-Chicago or New York City or Washington:").lower()
+            if city=='chicago' or city=='new york city' or city=='washington':
                 break
             else:
                 print("Sorry, That is not the intended input, Please enter the name of any one city from the above 3 options")
@@ -43,8 +43,8 @@ def get_filters():
     while True:
         try:
             months=['january','february','march','april','may','june','all']
-            month=input("Enter the Name of the Month['January','february','march','april','may','june'] you want the data for[enter 'all' for all months]:")
-            if month.lower() in months:
+            month=input("Enter the Name of the Month['January','february','march','april','may','june'] you want the data for[enter 'all' for all months]:").lower()
+            if month in months:
                 break
             else:
                 print("Sorry, That is not the intended input, Please enter the name of any valid Month")
@@ -56,8 +56,8 @@ def get_filters():
     while True:
         try:
             days=['monday','tuesday','wednesday','thursday','friday','saturday','sunday','all']
-            day=input("Enter the Name of the Day you want the data for[enter 'all' for all days]:")
-            if day.lower() in days:
+            day=input("Enter the Name of the Day you want the data for[enter 'all' for all days]:").lower()
+            if day in days:
                 break
             else:
                 print("Sorry, That is not the intended input, Please enter the name of any valid Day")
@@ -94,7 +94,7 @@ def load_data(city, month, day):
     df['hour']=df['Start Time'].dt.hour
     
     if month!='all':
-        months=['january','february','march','april','may','june','july','august','september','october','november','december']
+        months=['january','february','march','april','may','june']
         month=months.index(month)+1
         df=df[df['month']==month]
      
@@ -113,7 +113,7 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
-    months=['january','february','march','april','may','june','july','august','september','october','november','december']
+    months=['january','february','march','april','may','june']
     popular_month=months[df['month'].mode()[0]-1]
     print("The most popular month of travel is:{}".format(popular_month.title()))
 
@@ -192,7 +192,7 @@ def user_stats(df,city):
 
 
     # TO DO: Display counts of gender
-    if city.lower()=='washington':
+    if city=='washington':
         print("\nSorry, there is no gender data for Washington")
     else:
         print("\nHere is the count of Gender:\n",df['Gender'].value_counts())
@@ -200,7 +200,7 @@ def user_stats(df,city):
         
 
     # TO DO: Display earliest, most recent, and most common year of birth
-    if city.lower()=='washington':
+    if city=='washington':
         print("\nSorry, there is no birth year data for Washington")
     else:
         year=df['Birth Year']
