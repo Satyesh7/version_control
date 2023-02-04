@@ -83,7 +83,7 @@ def load_data(city, month, day):
     df['hour']=df['Start Time'].dt.hour
     
     if month!='all':
-        months=['january','february','march','april','may','june','july','august','september','october','november','december']
+        months=['january','february','march','april','may','june']
         month=months.index(month)+1
         df=df[df['month']==month]
      
@@ -102,7 +102,7 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
-    months=['january','february','march','april','may','june','july','august','september','october','november','december']
+    months=['january','february','march','april','may','june']
     popular_month=months[df['month'].mode()[0]-1]
     print("The most popular month of travel is:{}".format(popular_month.title()))
 
